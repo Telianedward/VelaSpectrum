@@ -1,0 +1,123 @@
+{
+  "name": "vela-spectrum",
+  "displayName": "Vela Spectrum",
+  "description": "An inclusive, accessible theme for VS Code with support for dark, light, high contrast, and color vision variations (Protanopia, Deuteranopia, Tritanopia). Designed for clarity, beauty, and universal readability.",
+  "main": "dist/main.js",
+  "type": "module",
+  "version": "0.3.1",
+  "publisher": "telianedward",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark",
+    "light",
+    "high contrast",
+    "accessibility",
+    "colorblind",
+    "tritanopia",
+    "protanopia",
+    "deuteranopia",
+    "inclusive",
+    "accessible",
+    "modern",
+    "syntax highlighting",
+    "developer experience"
+  ],
+  "icon": "VelaSpectrum.png",
+  "galleryBanner": {
+    "color": "#1a1a2e",
+    "theme": "dark"
+  },
+  "preview": true,
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/Telianedward"
+    }
+  ],
+  "homepage": "https://github.com/Telianedward/VelaSpectrum",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Telianedward/VelaSpectrum"
+  },
+  "bugs": {
+    "url": "https://github.com/Telianedward/VelaSpectrum/issues"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Vela Spectrum Dark+",
+        "uiTheme": "vs-dark",
+        "path": "./themes/my-dark.json"
+      },
+      {
+        "label": "Vela Spectrum Dark+ Dimmed",
+        "uiTheme": "vs-dark",
+        "path": "./themes/my-dark_dimmed.json"
+      },
+      {
+        "label": "Vela Spectrum High Contrast",
+        "uiTheme": "hc-black",
+        "path": "./themes/my-dark_high_contrast.json"
+      },
+      {
+        "label": "Vela Spectrum Dark+ Colorblind",
+        "uiTheme": "vs-dark",
+        "path": "./themes/my-dark_colorblind.json"
+      },
+      {
+        "label": "Vela Spectrum Dark+ Tritanopia",
+        "uiTheme": "hc-black",
+        "path": "./themes/my-dark_tritanopia.json"
+      },
+      {
+        "label": "Vela Spectrum Light+",
+        "uiTheme": "vs",
+        "path": "./themes/my-light.json"
+      },
+      {
+        "label": "Vela Spectrum High Contrast Light",
+        "uiTheme": "hc-light",
+        "path": "./themes/my-light_high_contrast.json"
+      },
+      {
+        "label": "Vela Spectrum Colorblind Light",
+        "uiTheme": "vs",
+        "path": "./themes/my-light_colorblind.json"
+      },
+      {
+        "label": "Vela Spectrum Light+ Tritanopia",
+        "uiTheme": "hc-light",
+        "path": "./themes/my-light_tritanopia.json"
+      }
+    ]
+  },
+ "scripts": {
+  "build": "tsc && node dist/main.js",
+  "dev": "node --loader ts-node/esm src/main.ts",
+  "watch": "nodemon --watch src --exec \"node --loader ts-node/esm src/main.ts\""
+},
+  "devDependencies": {
+    "@types/node": "^18.19.122",
+    "esbuild": "^0.25.9",
+    "nodemon": "^3.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "aiAssistant": {
+    "support": true,
+    "capabilities": [
+      "theme-customization",
+      "accessibility-guidance"
+    ]
+  }
+}
