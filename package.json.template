@@ -49,53 +49,7 @@
     "url": "https://github.com/Telianedward/VelaSpectrum/issues"
   },
   "contributes": {
-    "themes": [
-      {
-        "label": "Vela Spectrum Dark+",
-        "uiTheme": "vs-dark",
-        "path": "./themes/default-d.json"
-      },
-      {
-        "label": "Vela Spectrum Colorblind",
-        "uiTheme": "vs-dark",
-        "path": "./themes/default-dc.json"
-      },
-      {
-        "label": "Vela Spectrum Dimmed",
-        "uiTheme": "vs-dark",
-        "path": "./themes/default-dd.json"
-      },
-      {
-        "label": "Vela Spectrum High Contrast",
-        "uiTheme": "hc-black",
-        "path": "./themes/default-dhc.json"
-      },
-      {
-        "label": "Vela Spectrum Tritanopia",
-        "uiTheme": "hc-black",
-        "path": "./themes/default-dt.json"
-      },
-      {
-        "label": "Vela Spectrum Light+",
-        "uiTheme": "vs",
-        "path": "./themes/default-l.json"
-      },
-      {
-        "label": "Vela Spectrum Colorblind Light",
-        "uiTheme": "vs",
-        "path": "./themes/default-lc.json"
-      },
-      {
-        "label": "Vela Spectrum High Contrast Light",
-        "uiTheme": "hc-light",
-        "path": "./themes/default-lhc.json"
-      },
-      {
-        "label": "Vela Spectrum Tritanopia Light",
-        "uiTheme": "hc-light",
-        "path": "./themes/default-lt.json"
-      }
-    ]
+    "themes": []
   },
   "scripts": {
     "build": "tsc && node dist/main.js",

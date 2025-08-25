@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vela Spectrum — Цветовая библиотека</title>
+  <script type="module">
+    // === Темы: светлая и тёмная ===
+    const themes = {
+      light: {
+        bg: '#f5f5f5',
+        cardBg: '#ffffff',
+        text: '#1e1e1e',
+        heading: '#2e2e2e',
+        muted: '#666',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
+      },
+      dark: {
+        bg: '#121212',
+        cardBg: '#1e1e1e',
+        text: '#e0e0e0',
+        heading: '#ffffff',
+        muted: '#999',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)'
+      }
+    };
+
+    // Применяем тему
+    function applyTheme(themeName) {
+      const theme = themes[themeName];
+      document.documentElement.style.setProperty('--bg', theme.bg);
+      document.documentElement.style.setProperty('--card-bg', theme.cardBg);
+      document.documentElement.style.setProperty('--text', theme.text);
+      document.documentElement.style.setProperty('--heading', theme.heading);
+      document.documentElement.style.setProperty('--muted', theme.muted);
+      document.documentElement.style.setProperty('--shadow', theme.boxShadow);
+      document.body.classList.toggle('dark', themeName === 'dark');
+    }
+
+    // Загружаем сохранённую тему
+    const savedTheme = localStorage.getItem('colorPreviewTheme') || 'light';
+    applyTheme(savedTheme);
+
+    // Переключение темы
+    window.switchTheme = () => {
+      const current = localStorage.getItem('colorPreviewTheme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      localStorage.setItem('colorPreviewTheme', next);
+      applyTheme(next);
+    };
+
+    // === Универсальное копирование в буфер обмена ===
+    window.copyHex = (hex) => {
+      // Способ 1: Современный API (работает в HTTP/HTTPS)
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(hex).then(() => {
+          showToast(`Скопировано: ${hex}`);
+        }).catch(err => {
+          console.warn('Clipboard API failed:', err);
+          fallbackCopyTextToClipboard(hex);
+        });
+      } else {
+        // Способ 2: Старый, но надёжный (работает везде, включая file://)
+        fallbackCopyTextToClipboard(hex);
+      }
+    };
+
+    // Вспомогательная функция: копирование через временный input
+    function fallbackCopyTextToClipboard(text) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";  // предотвращает прокрутку экрана
+      textArea.style.left = "-999999px";
+      textArea.style.top = "-999999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        showToast(`Скопировано: ${text}`);
+      } catch (err) {
+        console.error('Fallback: Не удалось скопировать', err);
+        showToast(`Ошибка копирования: ${text}`);
+      }
+      document.body.removeChild(textArea);
+    }
+
+    // Показ уведомления
+    function showToast(message) {
+      const toast = document.getElementById('copy-toast');
+      toast.textContent = message;
+      toast.style.opacity = 1;
+      setTimeout(() => {
+        toast.style.opacity = 0;
+      }, 1500);
+    }
+
+    // === Загружаем colors.json ===
+    fetch('./colors.json')
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}: ${r.statusText}`);
+        return r.json();
+      })
+      .then(colors => {
+        const container = document.getElementById('colors-container');
+
+        Object.entries(colors).forEach(([key, color]) => {
+          const card = document.createElement('div');
+          card.className = 'color-card';
+
+          // Вычисляем контрастный текст
+          const rgb = [color.rgb.r, color.rgb.g, color.rgb.b];
+          const luminance = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255;
+          const textColor = luminance > 0.5 ? '#000' : '#fff';
+
+          card.innerHTML = `
+            <div class="color-preview" 
+                 style="background: ${color.hex}; color: ${textColor}"
+                 onclick="copyHex('${color.hex}')"
+                 title="Нажмите, чтобы скопировать ${color.hex}">
+              ${color.hex}
+            </div>
+            <div class="color-info">
+              <strong>${color.name}</strong>
+              <small>${key}</small>
+              <br>
+              <span>Перевод: ${color.description || '—'}</span>
+              <span>RGB(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b})</span>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => {
+        document.body.innerHTML = `<h1 style="text-align:center; margin-top:50px; color:#d32f2f">Ошибка: ${err.message}</h1>`;
+      });
+  </script>
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --text: #1e1e1e;
+      --heading: #2e2e2e;
+      --muted: #666;
+      --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark {
+      background: #121212;
+      color: #e0e0e0;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px 0;
+      color: var(--heading);
+      transition: color 0.3s ease;
+    }
+
+    .theme-toggle {
+      display: block;
+      margin: 0 auto 20px;
+      padding: 8px 16px;
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--muted);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: all 0.2s;
+    }
+
+    .theme-toggle:hover {
+      background: var(--muted);
+      color: var(--card-bg);
+    }
+
+    #colors-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .color-card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--card-bg);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .color-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .color-preview {
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2em;
+      user-select: none;
+    }
+
+    .color-info {
+      padding: 12px;
+    }
+
+    .color-info strong {
+      display: block;
+      font-size: 1.1em;
+    }
+
+    .color-info small {
+      color: var(--muted);
+      font-size: 0.8em;
+      text-transform: none;
+    }
+
+    .color-info span {
+      display: block;
+      font-size: 0.9em;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* Всплывающее уведомление о копировании */
+    #copy-toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.9em;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      #colors-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" onclick="switchTheme()">
+    Переключить тему
+  </button>
+  <h1>Vela Spectrum — Цветовая библиотека</h1>
+  <div id="colors-container"></div>
+  <div id="copy-toast">Скопировано: #...</div>
+</body>
+</html>

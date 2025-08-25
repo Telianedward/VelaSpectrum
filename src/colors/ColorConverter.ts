@@ -25,6 +25,7 @@ interface LCH {
 interface ColorEntry {
     id: number;
     name: string;
+    description?: string; // Опционально, для русского описания
     hex: string;
     rgb: RGB;
 }
@@ -398,7 +399,7 @@ class OKLCHColorGenerator {
     }
 /**
  * Конвертирует цвет из OKLCH в формат HEX (#RRGGBBAA).
- * 
+ *
  * @param l - Lightness (в диапазоне [0..1])
  * @param c - Chroma (насыщенность)
  * @param h - Hue (тон в градусах)
@@ -420,12 +421,12 @@ public static oklchToHex(l: number, c: number, h: number, alpha = 1): string {
 }
     /**
      * Преобразует цвет из OKLCH в RGB.
-     * 
+     *
      * Процесс обратный к rgbToOKLCH:
      * 1. OKLCH → OKLAB (декартово)
      * 2. OKLAB → Linear RGB
      * 3. Linear RGB → Gamma-corrected RGB [0..255]
-     * 
+     *
      * @param oklch - Объект с компонентами l (0..1), c, h (0..360)
      * @returns Объект { r, g, b } в диапазоне [0..255]
      */
@@ -513,43 +514,54 @@ public static oklchToHex(l: number, c: number, h: number, alpha = 1): string {
      * @returns Найденный цвет в виде объекта `ColorEntry`, либо `null`, если цвет не найден.
      */
     public static getColorRgb(input: string | number): ColorEntry | null {
-        let colorEntry: ColorEntry | undefined;
+  let colorEntry: ColorEntry | undefined;
 
-        // Если вход — число, ищем по ID
-        if (typeof input === 'number') {
-            colorEntry = Object.values(this.colors_map).find(
-                (c: ColorEntry): boolean => c.id === input
-            );
-        } else {
-            const str: string = input.trim().toLowerCase();
+  // 🔒 Защита: если input — null, undefined или не строка/число
+  if (input === null || input === undefined) {
+    console.warn(`getColorRgb: получен null или undefined`);
+    return null;
+  }
 
-            // Пытаемся найти цвет по ключу (например, "red")
-            if (this.colors_map[str]) {
-                colorEntry = this.colors_map[str];
-            } else {
-                // Ищем по имени цвета (регистронезависимо)
-                colorEntry = Object.values(this.colors_map).find(
-                    (c: ColorEntry): boolean => c.name.toLowerCase() === str
-                );
+  // Если вход — число, ищем по ID
+  if (typeof input === 'number') {
+    colorEntry = Object.values(this.colors_map).find(
+      (c: ColorEntry): boolean => c.id === input
+    );
+  } else if (typeof input === 'string') {
+    // 🔒 Теперь безопасно: мы знаем, что input — строка
+    const str: string = input.trim().toLowerCase();
 
-                // Если не нашли по имени — ищем по HEX-коду
-                if (!colorEntry) {
-                    colorEntry = Object.values(this.colors_map).find(
-                        (c: ColorEntry): boolean => c.hex.toLowerCase() === str
-                    );
-                }
-            }
-        }
+    // Пытаемся найти цвет по ключу (например, "red")
+    if (this.colors_map[str]) {
+      colorEntry = this.colors_map[str];
+    } else {
+      // Ищем по имени цвета (регистронезависимо)
+      colorEntry = Object.values(this.colors_map).find(
+        (c: ColorEntry): boolean => c.name.toLowerCase() === str
+      );
 
-        // Если цвет не найден — выводим предупреждение
-        if (!colorEntry) {
-            console.warn(`Цвет "${input}" не найден`);
-            return null;
-        }
-
-        // Возвращаем копию объекта, чтобы не мутировать оригинал
-        return { ...colorEntry };
+      // Если не нашли по имени — ищем по HEX-коду
+      if (!colorEntry) {
+        colorEntry = Object.values(this.colors_map).find(
+          (c: ColorEntry): boolean => c.hex.toLowerCase() === str
+        );
+      }
     }
+  } else {
+    // 🔴 Если не строка и не число — ошибка типа
+    console.error(`getColorRgb: ожидается строка или число, получено ${typeof input}`, input);
+    return null;
+  }
+
+  // Если цвет не найден — выводим предупреждение
+  if (!colorEntry) {
+    console.warn(`Цвет "${input}" не найден`);
+    return null;
+  }
+
+  // Возвращаем копию объекта, чтобы не мутировать оригинал
+  return { ...colorEntry };
+}
 
     public static rgbToXYZ(r: number, g: number, b: number): [number, number, number] {
 

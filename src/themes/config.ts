@@ -51,6 +51,7 @@ export type ThemeType = 'vs' | 'vs-dark' | 'hc-black' | 'hc-light';
  * @property {ThemeType} type - Тип UI-темы (определяет базовый фон и контраст)
  * @property {string} accentColorName - Название акцентного цвета из `colors.json` (например, 'blues', 'yellows')
  * @property {ThemeMode} mode - Режим отображения (цветослепота, высокий контраст и т.д.)
+ * @property {boolean} isDark - Определяет, является ли тема тёмной (`vs-dark`, `hc-black`) или светлой (`vs`, `hc-light`)
  * @property {Record<string, number>} [alphaOverrides] - Позволяет переопределить прозрачность для конкретных цветов
  * 
  * @example
@@ -90,13 +91,22 @@ export type ThemeConfig = {
    * Режим отображения темы (для доступности и восприятия).
    */
   mode: ThemeMode;
-
+ /**
+   * Определяет, является ли тема тёмной.
+   * Используется для корректного расчёта светлоты (l) фона, текста и других элементов.
+   * 
+   * @example
+   * true → 'vs-dark' или 'hc-black'
+   * false → 'vs' или 'hc-light'
+   */
+  isDark: boolean;
   /**
    * Необязательное: переопределение прозрачности для конкретных цветов.
    * Ключ — имя цвета VS Code, значение — Alpha от 0 до 10 (где 10 = 100%).
    * @example { "editor.background": 8, "badge.background": 10 }
    */
   alphaOverrides?: Record<string, number>;
+
 };
 
 // === Конфигурации тем ===
@@ -124,63 +134,72 @@ export const themeConfigs: ThemeConfig[] = [
     name: 'Vela Spectrum Dark+',
     type: 'vs-dark',
     accentColorName: 'blues',
-    mode: 'normal'
+    mode: 'normal',
+    isDark: true 
   },
   {
     key: 'dd',
     name: 'Vela Spectrum Dark+ Dimmed',
     type: 'vs-dark',
     accentColorName: 'blues',
-    mode: 'dimmed'
+    mode: 'dimmed',
+    isDark: true 
   },
   {
     key: 'dhc',
     name: 'Vela Spectrum High Contrast',
     type: 'hc-black',
     accentColorName: 'blues',
-    mode: 'highContrast'
+    mode: 'highContrast',
+    isDark: true 
   },
   {
     key: 'dc',
     name: 'Vela Spectrum Dark+ Colorblind',
     type: 'vs-dark',
     accentColorName: 'blues',
-    mode: 'colorblind'
+    mode: 'colorblind',
+    isDark: true 
   },
   {
     key: 'dt',
     name: 'Vela Spectrum Dark+ Tritanopia',
     type: 'hc-black',
     accentColorName: 'blues',
-    mode: 'tritanopia'
+    mode: 'tritanopia',
+    isDark: true 
   },
   {
     key: 'l',
     name: 'Vela Spectrum Light+',
     type: 'vs',
     accentColorName: 'blues',
-    mode: 'normal'
+    mode: 'normal',
+    isDark: false 
   },
   {
     key: 'lhc',
     name: 'Vela Spectrum High Contrast Light',
     type: 'hc-light',
     accentColorName: 'blues',
-    mode: 'highContrast'
+    mode: 'highContrast',
+    isDark: false 
   },
   {
     key: 'lc',
     name: 'Vela Spectrum Colorblind Light',
     type: 'vs',
     accentColorName: 'blues',
-    mode: 'colorblind'
+    mode: 'colorblind',
+    isDark: false 
   },
   {
     key: 'lt',
     name: 'Vela Spectrum Light+ Tritanopia',
     type: 'hc-light',
     accentColorName: 'blues',
-    mode: 'tritanopia'
+    mode: 'tritanopia',
+    isDark: false 
   }
 ];
 

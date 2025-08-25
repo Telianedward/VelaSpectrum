@@ -3,21 +3,40 @@ import { generateAllThemes } from './generator/ThemeGenerator.js';
 import * as fs from 'fs/promises';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import type { PaletteName } from './types/index.js'; // ✅ Импортируем тип
 
+// === Обработка аргументов ===
+const args = process.argv.slice(2);
+let paletteName = 'default';
+
+for (let i = 0; i < args.length; i++) {
+  if (args[i] === '--palette' && args[i + 1]) {
+    paletteName = args[i + 1];
+  }
+}
+
+// === Путь к папке ===
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const OUTPUT_DIR = join(__dirname, '../themes');
 
 async function build() {
-  await fs.mkdir(OUTPUT_DIR, { recursive: true });
-  const themes = generateAllThemes();
+  try {
+    await fs.mkdir(OUTPUT_DIR, { recursive: true });
 
-  for (const { config, theme } of themes) {
-    const filename = `my-${config.key}.json`;
-    const filepath = join(OUTPUT_DIR, filename);
-    await fs.writeFile(filepath, JSON.stringify(theme, null, 2));
-    console.log(`✅ ${filename}`);
+    // ✅ Приведение к PaletteName
+    const themes = generateAllThemes(paletteName as PaletteName);
+
+    for (const { config, theme } of themes) {
+      // ✅ Формат: {palette}-{key}.json
+      const filename = `${paletteName}-${config.key}.json`;
+      const filepath = join(OUTPUT_DIR, filename);
+      await fs.writeFile(filepath, JSON.stringify(theme, null, 2));
+      console.log(`✅ ${filename}`);
+    }
+  } catch (err) {
+    console.error('Ошибка генерации:', err);
   }
 }
 
-build().catch(console.error);
+build();
