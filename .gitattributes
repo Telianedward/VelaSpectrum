@@ -1,0 +1,2 @@
+# Прозрачность для некоторых файлов
+images/* filter=git-lfs clean=cat smudge=cat
