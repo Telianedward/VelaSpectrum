@@ -1,2 +1,12 @@
 node_modules
 *.vsix
+# Исключаем из репозитория
+node_modules/
+src/
+dist/
+*.ts
+*.js
+*.json.template
+*.ai
+.vscode/
+.gitignore
