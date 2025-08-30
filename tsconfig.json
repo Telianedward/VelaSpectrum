@@ -17,12 +17,12 @@
     "emitDeclarationOnly": false,
     "sourceMap": true,
     "types": ["node"],
-    "isolatedModules": true
+    "isolatedModules": true,
   },
   "ts-node": {
     "esm": true,
     "transpileOnly": true
   },
-  "include": ["src", "scripts"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

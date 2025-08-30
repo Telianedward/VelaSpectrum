@@ -137,7 +137,7 @@ export const defaultPalette: DetailedPalette = {
     info: {
       fg: 'cerulean',
       emphasis: 'cerulean',
-      muted: 'lavenders'
+      muted: 'lavender'
     },
     sponsors: {
       fg: 'pinks',
@@ -183,7 +183,7 @@ export const defaultPalette: DetailedPalette = {
     },
      syntax: {
       // === Типы и структуры ===
-      type: 'blue',           // class, interface, type
+      type: 'blues',           // class, interface, type
       enum: 'pinks',           // enum
       interface: 'blues',      // interface
       class: 'pinks',          // class
@@ -195,7 +195,7 @@ export const defaultPalette: DetailedPalette = {
       property: 'blues',           // свойства объектов
       field: 'greens',             // поля классов
       constant: 'mints',           // константы (const, readonly)
-      local: 'neutrals',           // локальные переменные
+      local: 'frostWhite',           // локальные переменные
 
       // === Функции и методы ===
       function: 'blues',           // обычные функции
@@ -282,7 +282,7 @@ export const defaultPalette: DetailedPalette = {
     info: {
       fg: 'cerulean',
       emphasis: 'cerulean',
-      muted: 'lavenders'
+      muted: 'lavender'
     },
     sponsors: {
       fg: 'pinks',
@@ -340,7 +340,7 @@ export const defaultPalette: DetailedPalette = {
       property: 'blues',
       field: 'greens',
       constant: 'mints',
-      local: 'frostWhite',
+      local: 'githubDarkBg',
 
       // === Функции и методы ===
       function: 'blues',

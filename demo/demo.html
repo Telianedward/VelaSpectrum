@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Demo HTML</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <!-- Комментарий -->
+  <header id="main-header" class="site-header" data-theme="dark">
+    <h1 contenteditable="true">Welcome to Vela Spectrum</h1>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Форма -->
+    <form action="/submit" method="post" novalidate>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+
+      <button type="submit" disabled>Send</button>
+    </form>
+
+    <!-- Списки -->
+    <ul data-type="unordered">
+      <li>Item 1</li>
+      <li>Item 2
+        <ol>
+          <li>Nested 1</li>
+          <li>Nested 2</li>
+        </ol>
+      </li>
+    </ul>
+
+    <!-- Код и цитаты -->
+    <blockquote cite="https://example.com">
+      <p>"This is a quote from a famous source."</p>
+    </blockquote>
+
+    <pre><code class="language-js">console.log('Hello, world!');</code></pre>
+
+    <!-- Картинка -->
+    <img src="theme-preview.png" alt="Vela Spectrum theme preview" loading="lazy" />
+
+    <!-- Таблица -->
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Alice</td>
+          <td>Developer</td>
+        </tr>
+        <tr>
+          <td>Bob</td>
+          <td>Designer</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    &copy; 2025 Vela Spectrum. All rights reserved.
+  </footer>
+</body>
+</html>

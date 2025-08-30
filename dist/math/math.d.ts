@@ -158,3 +158,4 @@ export default class NumberAdjuster {
      */
     static adjustWithPrecision3: (type: string, value: any, precision?: number) => number;
 }
+//# sourceMappingURL=math.d.ts.map

@@ -1,0 +1,100 @@
+/* demo.css — продвинутый CSS с переменными, анимациями, медиа-запросами */
+
+:root {
+  --primary: #7a84ff;
+  --secondary: #41b68b;
+  --text: #f6f8fa;
+  --bg: #0d1117;
+  --border-radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+/* Селекторы: класс, ID, атрибут, псевдоклассы */
+.container {
+  background: var(--bg);
+  color: var(--text);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.container:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+#header {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+input[type="text"]:focus {
+  border: 2px solid var(--primary);
+  outline: none;
+}
+
+/* Вложенность (как в SCSS) */
+.card {
+  border: 1px solid #333;
+  border-radius: var(--border-radius);
+
+  &__title {
+    font-weight: bold;
+    color: var(--primary);
+  }
+
+  &__body {
+    margin: 1rem 0;
+
+    p {
+      line-height: 1.6;
+    }
+  }
+}
+
+/* Анимация */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .hidden-mobile {
+    display: none;
+  }
+}
+
+/* CSS Grid и Flexbox */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Поддержка dark mode через prefers-color-scheme */
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: #000;
+    --bg: #fff;
+  }
+}

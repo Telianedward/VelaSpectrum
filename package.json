@@ -86,6 +86,11 @@
         "path": "./themes/default-lc.json"
       },
       {
+        "label": "Vela Spectrum Dimmed Light",
+        "uiTheme": "vs",
+        "path": "./themes/default-ld.json"
+      },
+      {
         "label": "Vela Spectrum High Contrast Light",
         "uiTheme": "hc-light",
         "path": "./themes/default-lhc.json"
@@ -98,10 +103,11 @@
     ]
   },
   "scripts": {
+    "check-colors": "ts-node scripts/check-colors.ts",
     "build": "tsc && node dist/main.js",
-    "dev": "node --loader ts-node/esm src/main.ts",
-    "watch": "nodemon --watch src --exec \"node --loader ts-node/esm src/main.ts\"",
-    "package": "node scripts/generate-package.js && vsce package",
+    "dev": "npm run check-colors && node --loader ts-node/esm src/main.ts",
+    "watch": "npm run check-colors && nodemon --watch src --exec \"node --loader ts-node/esm src/main.ts\"",
+    "package": "npm run check-colors && node scripts/generate-package.js && npx @vscode/vsce package",
     "preview:colors": "http-server -c-1 -o -p 8080 ./src/colors --cors"
   },
   "devDependencies": {

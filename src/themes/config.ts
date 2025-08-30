@@ -1,12 +1,12 @@
 /**
  * Конфигурация тем Vela Spectrum.
- * 
+ *
  * Этот файл определяет все доступные темы, их параметры и поведение.
  * Поддерживает: стандартные, высокий контраст, цветослепоту (Protanopia, Deuteranopia, Tritanopia),
  * затемнённые и светлые режимы.
- * 
+ *
  * Темы генерируются динамически на основе базового цвета и режима отображения.
- * 
+ *
  * @see {@link themeConfigs} — массив всех конфигураций тем
  * @module themes/config
  */
@@ -15,9 +15,9 @@
 
 /**
  * Режим отображения темы.
- * 
+ *
  * Определяет, как цвета адаптируются под особенности восприятия.
- * 
+ *
  * @example
  * 'normal' — стандартный режим
  * 'colorblind' — коррекция для Protanopia/Deuteranopia
@@ -29,10 +29,10 @@ export type ThemeMode = 'normal' | 'dimmed' | 'highContrast' | 'colorblind' | 't
 
 /**
  * Тип UI-темы в VS Code.
- * 
+ *
  * Определяет базовую цветовую семантику редактора и используется для выбора
  * фонового режима (светлый, тёмный, высокий контраст).
- * 
+ *
  * @example
  * 'vs' — светлая тема
  * 'vs-dark' — тёмная тема
@@ -43,9 +43,9 @@ export type ThemeType = 'vs' | 'vs-dark' | 'hc-black' | 'hc-light';
 
 /**
  * Конфигурация одной темы.
- * 
+ *
  * Определяет все параметры, необходимые для генерации темы VS Code.
- * 
+ *
  * @property {string} key - Уникальный ключ темы (используется в имени файла: `my-${key}.json`)
  * @property {string} name - Отображаемое имя темы в VS Code Marketplace
  * @property {ThemeType} type - Тип UI-темы (определяет базовый фон и контраст)
@@ -53,7 +53,7 @@ export type ThemeType = 'vs' | 'vs-dark' | 'hc-black' | 'hc-light';
  * @property {ThemeMode} mode - Режим отображения (цветослепота, высокий контраст и т.д.)
  * @property {boolean} isDark - Определяет, является ли тема тёмной (`vs-dark`, `hc-black`) или светлой (`vs`, `hc-light`)
  * @property {Record<string, number>} [alphaOverrides] - Позволяет переопределить прозрачность для конкретных цветов
- * 
+ *
  * @example
  * {
  *   key: 'd',
@@ -91,14 +91,14 @@ export type ThemeConfig = {
    * Режим отображения темы (для доступности и восприятия).
    */
   mode: ThemeMode;
- /**
-   * Определяет, является ли тема тёмной.
-   * Используется для корректного расчёта светлоты (l) фона, текста и других элементов.
-   * 
-   * @example
-   * true → 'vs-dark' или 'hc-black'
-   * false → 'vs' или 'hc-light'
-   */
+  /**
+    * Определяет, является ли тема тёмной.
+    * Используется для корректного расчёта светлоты (l) фона, текста и других элементов.
+    *
+    * @example
+    * true → 'vs-dark' или 'hc-black'
+    * false → 'vs' или 'hc-light'
+    */
   isDark: boolean;
   /**
    * Необязательное: переопределение прозрачности для конкретных цветов.
@@ -113,14 +113,14 @@ export type ThemeConfig = {
 
 /**
  * Массив всех конфигураций тем Vela Spectrum.
- * 
+ *
  * Каждая тема — это комбинация:
  * - Типа (светлая/тёмная/высокий контраст)
  * - Акцентного цвета (из `colors.json`)
  * - Режима (нормальный, цветослепота, затемнённый)
- * 
+ *
  * При генерации, каждый объект используется для создания `.json` файла в папке `/themes`.
- * 
+ *
  * @constant {ThemeConfig[]}
  * @example
  * [
@@ -135,7 +135,7 @@ export const themeConfigs: ThemeConfig[] = [
     type: 'vs-dark',
     accentColorName: 'blues',
     mode: 'normal',
-    isDark: true 
+    isDark: true
   },
   {
     key: 'dd',
@@ -143,7 +143,7 @@ export const themeConfigs: ThemeConfig[] = [
     type: 'vs-dark',
     accentColorName: 'blues',
     mode: 'dimmed',
-    isDark: true 
+    isDark: true
   },
   {
     key: 'dhc',
@@ -151,7 +151,7 @@ export const themeConfigs: ThemeConfig[] = [
     type: 'hc-black',
     accentColorName: 'blues',
     mode: 'highContrast',
-    isDark: true 
+    isDark: true
   },
   {
     key: 'dc',
@@ -159,7 +159,7 @@ export const themeConfigs: ThemeConfig[] = [
     type: 'vs-dark',
     accentColorName: 'blues',
     mode: 'colorblind',
-    isDark: true 
+    isDark: true
   },
   {
     key: 'dt',
@@ -167,7 +167,7 @@ export const themeConfigs: ThemeConfig[] = [
     type: 'hc-black',
     accentColorName: 'blues',
     mode: 'tritanopia',
-    isDark: true 
+    isDark: true
   },
   {
     key: 'l',
@@ -175,7 +175,15 @@ export const themeConfigs: ThemeConfig[] = [
     type: 'vs',
     accentColorName: 'blues',
     mode: 'normal',
-    isDark: false 
+    isDark: false
+  },
+  {
+    key: 'ld',
+    name: 'Vela Spectrum Dimmed Light',
+    type: 'vs',
+    accentColorName: 'blues',
+    mode: 'dimmed',
+    isDark: false
   },
   {
     key: 'lhc',
@@ -183,7 +191,7 @@ export const themeConfigs: ThemeConfig[] = [
     type: 'hc-light',
     accentColorName: 'blues',
     mode: 'highContrast',
-    isDark: false 
+    isDark: false
   },
   {
     key: 'lc',
@@ -191,7 +199,7 @@ export const themeConfigs: ThemeConfig[] = [
     type: 'vs',
     accentColorName: 'blues',
     mode: 'colorblind',
-    isDark: false 
+    isDark: false
   },
   {
     key: 'lt',
@@ -199,7 +207,7 @@ export const themeConfigs: ThemeConfig[] = [
     type: 'hc-light',
     accentColorName: 'blues',
     mode: 'tritanopia',
-    isDark: false 
+    isDark: false
   }
 ];
 
@@ -210,13 +218,13 @@ export const themeConfigs: ThemeConfig[] = [
  * - Менять акцентный цвет (например, на 'yellows' или 'reds')
  * - Поддерживать доступность (colorblind, tritanopia)
  * - Генерировать темы автоматически
- * 
+ *
  * @description
  * Все темы генерируются через `ThemeGenerator`, который:
  * 1. Берёт цвет из `colors.json`
  * 2. Конвертирует в OKLCH
  * 3. Применяет коррекции (для цветослепоты, контраста)
  * 4. Генерирует `.json` для VS Code
- * 
+ *
  * Это обеспечивает **максимальную точность, согласованность и доступность**.
  */

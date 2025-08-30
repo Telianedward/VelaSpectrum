@@ -20,7 +20,8 @@ const LABEL_MAP = {
   'dt': 'Tritanopia',
   'lhc': 'High Contrast Light',
   'lc': 'Colorblind Light',
-  'lt': 'Tritanopia Light'
+  'lt': 'Tritanopia Light',
+  'ld': 'Dimmed Light'
 };
 
 // Карта для uiTheme
@@ -33,7 +34,8 @@ const UI_THEME_MAP = {
   'l': 'vs',
   'lhc': 'hc-light',
   'lc': 'vs',
-  'lt': 'hc-light'
+  'lt': 'hc-light',
+   'ld': 'vs'
 };
 
 async function generatePackage() {

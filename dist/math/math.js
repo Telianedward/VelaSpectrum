@@ -310,3 +310,4 @@ export default class NumberAdjuster {
         return +(value[0] + `e` + (value[1] ? (+value[1] + precision) : precision));
     };
 }
+//# sourceMappingURL=math.js.map
