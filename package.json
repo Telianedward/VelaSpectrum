@@ -3,7 +3,7 @@
   "displayName": "Vela Spectrum",
   "description": "An inclusive, accessible theme for VS Code with support for dark, light, high contrast, and color vision variations (Protanopia, Deuteranopia, Tritanopia). Designed for clarity, beauty, and universal readability.",
   "type": "module",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "publisher": "telianedward",
   "license": "MIT",
   "engines": {

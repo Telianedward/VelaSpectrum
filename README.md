@@ -1,16 +1,7 @@
 # Vela Spectrum
 
 > 🌌 Тема цвета будущего: глубокая, живая, интеллектуальная.
-## 🎨 Превью
 
-![Vela Spectrum](images/VelaSpectrum.png)
-
-## 💡 Цветовая палитра
-
-- **Акцент**: `#4F46E5` (фиолетовый)
-- **Успех**: `#10B981` (зелёный)
-- **Ошибка**: `#EF4444` (красный)
-- **Предупреждение**: `#F59E0B` (жёлтый)
 Vela Spectrum — это **современная тема для VS Code**, построенная на **OKLCH** и **семантических цветах**, с полной поддержкой **AI, Copilot, GitHub, Accessibility** и **режимов для дальтоников**.
 
 Она не просто красивая — она **умная**.
@@ -28,16 +19,16 @@ Vela Spectrum — это **современная тема для VS Code**, п�
 - `normal`, `dimmed`, `highContrast`
 - `colorblind`, `tritanopia`
 - `light`, `dark`, `auto`
-- `ai` (эксклюзивный режим с фиолетовыми акцентами)
+- `ai` (эксклюзивный режим с фиолетовыми акцентами) ( в разработке )
 
 ✅ **Глубокая настройка подсветки кода**
-Тысячи токенов: `syntax.function`, `syntax.constant`, `syntax.local`, `syntax.decorator` — всё стилизовано.
+Тысячи токенов: `syntax.function`, `syntax.constant`, `syntax.local`, `syntax.decorator` ... — всё стилизовано.
 
 ✅ **Цветные скобки и направляющие**
 `editor.bracketPairColorization.enabled` — включено и красиво.
 
 ✅ **Поддержка терминала, вкладок, панелей**
-Цвета для `terminal`, `activityBar`, `titleBar`, `ports`, `merge conflicts` — везде.
+Цвета для `terminal`, `activityBar`, `titleBar`, `ports`, `merge conflicts`  ... — везде.
 
 ✅ **Для дальтоников**
 Режимы `colorblind` и `tritanopia` — безопасные цвета, которые не сливаются.
@@ -46,66 +37,74 @@ Vela Spectrum — это **современная тема для VS Code**, п�
 Мягкие, сбалансированные тона — глаза не устают.
 
 ---
+
 ## 🖼 Скриншоты
 
-### Темный режим
-![Dark Mode](./images/demo/png/VelaSpectrumColorblind.png)
-![Dark Mode](./images/demo/png/VelaSpectrumColorblind.png)
-![DArk](./images/demo/png/VelaSpectrumColorblind.png)
-### Светлый режим
-![Light Mode](./images/demo/png/VelaSpectrumColorblindLight.png)
+### Vela Spectrum Dark+
+![Dark](./images/demo/png/VelaSpectrumDark.png)
 
-### AI Mode (эксклюзив)
-![AI Mode](./images/demo/png/VelaSpectrumDark.png)
+### Vela Spectrum Light+
+![Light](./images/demo/png/VelaSpectrumLight.png)
 
-### Цветные скобки
-![Bracket Pairs](./images/demo/png/VelaSpectrumDimmed.png)
+### Vela Spectrum Colorblind
+![Dark Colorblind](./images/demo/png/VelaSpectrumColorblind.png)
 
-### Подсветка Git-изменений
-![Git Diff](./images/demo/png/VelaSpectrumDimmedLight.png)
+### Vela Spectrum Colorblind Light
+![Dark Colorblind Light](./images/demo/png/VelaSpectrumColorblindLight.png)
 
-### Copilot Chat
-![Copilot Chat](./images/demo/png/VelaSpectrumHighContrast.png)
+### Vela Spectrum Dimmed
+![Dimmed Mode](./images/demo/png/VelaSpectrumDimmed.png)
 
----
+### Vela Spectrum Dimmed Light
+![DimmedLight Mode](./images/demo/png/VelaSpectrumDimmedLight.png)
 
-## 🌐 Режимы доступности
+### Vela Spectrum High Contrast
+![High Contrast Mode](./images/demo/png/VelaSpectrumHighContrast.png)
 
-### Colorblind (протанопия/дейтеранопия)
-![Colorblind Mode](images/accessibility/VelaSpectrum_Colorblind.png)
+### Vela Spectrum High Contrast Light
+![High Contrast Light Mode](./images/demo/png/VelaSpectrumHighContrastLight.png)
 
-### Tritanopia (нарушение синего канала)
-![Tritanopia Mode](images/accessibility/VelaSpectrum_Tritanopia.png)
+### Vela Spectrum Tritanopia
+![Tritanopia Mode](./images/demo/png/VelaSpectrumTritanopia.png)
 
-### High Contrast (высокий контраст)
-![High Contrast Mode](images/accessibility/VelaSpectrum_HighContrast.png)
+### Vela Spectrum Tritanopia Light
+![Tritanopia Light Mode ](./images/demo/png/VelaSpectrumTritanopiaLight.png)
 
----
 
-## 🎨 Дополнительные режимы
-
-### Dimmed (приглушённый)
-![Dimmed Mode](images/modes/VelaSpectrum_Dimmed.png)
-
-### AI Mode (фиолетовые акценты)
-![AI Mode](images/modes/VelaSpectrum_AI.png)
 
 ---
 
 ## 🎥 Видео-превью (GIF)
 
-### Темный режим
-![Dark Mode Demo](images/videos/VelaSpectrum_Dark.gif)
+### Vela Spectrum Dark+
+![Dark](./images/demo/gif/VelaSpectrumDark.gif)
 
-### Светлый режим
-![Light Mode Demo](images/videos/VelaSpectrum_Light.gif)
+### Vela Spectrum Light+
+![Light](./images/demo/gif/VelaSpectrumLight.gif)
 
-### Colorblind Mode
-![Colorblind Demo](images/videos/VelaSpectrum_Colorblind.gif)
+### Vela Spectrum Colorblind
+![Dark Colorblind](./images/demo/gif/VelaSpectrumColorblind.gif)
 
-### AI Mode
-![AI Mode Demo](images/videos/VelaSpectrum_AI.gif)
+### Vela Spectrum Colorblind Light
+![Dark Colorblind Light](./images/demo/gif/VelaSpectrumColorblindLight.gif)
 
+### Vela Spectrum Dimmed
+![Dimmed Mode](./images/demo/gif/VelaSpectrumDimmed.gif)
+
+### Vela Spectrum Dimmed Light
+![DimmedLight Mode](./images/demo/gif/VelaSpectrumDimmedLight.gif)
+
+### Vela Spectrum High Contrast
+![High Contrast Mode](./images/demo/gif/VelaSpectrumHighContrast.gif)
+
+### Vela Spectrum High Contrast Light
+![High Contrast Light Mode](./images/demo/gif/VelaSpectrumHighContrastLight.gif)
+
+### Vela Spectrum Tritanopia
+![Tritanopia Mode](./images/demo/png/VelaSpectrumTritanopia.gif)
+
+### Vela Spectrum Tritanopia Light
+![Tritanopia Light Mode ](./images/demo/gif/VelaSpectrumTritanopiaLight.gif)
 ---
 
 ## ⚙️ Настройки (рекомендуемые)
