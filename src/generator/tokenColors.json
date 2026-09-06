@@ -95,7 +95,6 @@
       "foreground": "{{syntax.parameter}}10"
     }
   },
-
   {
     "scope": [
       "source.go"
@@ -191,7 +190,7 @@
       "source.python"
     ],
     "settings": {
-      "foreground": "{{fg.default}}10"
+      "foreground": "{{syntax.variable}}10"
     }
   },
   {
@@ -301,11 +300,46 @@
   },
   {
     "scope": [
-      "punctuation.separator.period.python",
+      "punctuation.separator.period.python"
+    ],
+    "settings": {
+      "foreground": "{{syntax.variable}}10"
+    }
+  },
+  {
+    "scope": [
       "punctuation.separator.colon.python"
     ],
     "settings": {
       "foreground": "{{syntax.punctuation}}10"
+    }
+  },
+  {
+    "scope": [
+      "meta.function-call.generic.python",
+      "meta.function-call.python",
+      "meta.member.access.python"
+    ],
+    "settings": {
+      "foreground": "{{syntax.function}}10"
+    }
+  },
+  {
+    "scope": [
+      "meta.indexed-name.python",
+      "meta.item-access.python"
+    ],
+    "settings": {
+      "foreground": "{{syntax.decorator}}10"
+    }
+  },
+  {
+    "scope": [
+      "meta.attribute.python",
+      "meta.attribute.python variable.other.python"
+    ],
+    "settings": {
+      "foreground": "{{syntax.variable}}10"
     }
   },
   {
@@ -1051,13 +1085,12 @@
       "meta.tag.attributes",
       "meta.object.member",
       "meta.embedded.expression",
-       "meta.js.jsx.children"
+      "meta.js.jsx.children"
     ],
     "settings": {
       "foreground": "{{fg.default}}10"
     }
   },
-
   {
     "scope": [
       "entity.name.tag",
@@ -1174,7 +1207,7 @@
       "foreground": "{{syntax.regexp}}10"
     }
   },
-    {
+  {
     "scope": [
       "constant.character.escape"
     ],
@@ -1499,7 +1532,33 @@
       "variable.other.readwrite.js"
     ],
     "settings": {
-      "foreground": "{{sponsors.fg}}10"
+      "foreground": "{{syntax.variable}}10"
+    }
+  },
+  {
+    "scope": [
+      "meta.function-call.js",
+      "meta.function-call.ts",
+      "meta.function-call.tsx",
+      "meta.function-call.jsx",
+      "meta.function-call.generic.js",
+      "meta.function-call.generic.ts",
+      "meta.function-call.method.js",
+      "meta.function-call.method.ts"
+    ],
+    "settings": {
+      "foreground": "{{syntax.function}}10"
+    }
+  },
+  {
+    "scope": [
+      "meta.member.access.js",
+      "meta.member.access.ts",
+      "meta.member.access.tsx",
+      "meta.member.access.jsx"
+    ],
+    "settings": {
+      "foreground": "{{syntax.function}}10"
     }
   },
   {
@@ -1550,7 +1609,7 @@
       "punctuation.separator.key-value.html"
     ],
     "settings": {
-      "foreground": "{{sponsors.fg}}10",
+      "foreground": "{{syntax.operator}}10",
       "fontStyle": ""
     }
   },
@@ -1559,7 +1618,7 @@
       "punctuation.definition.tag"
     ],
     "settings": {
-      "foreground": "{{sponsors.fg}}10",
+      "foreground": "{{syntax.tag}}10",
       "fontStyle": ""
     }
   },
@@ -1569,7 +1628,7 @@
       "punctuation.definition.string.end.js"
     ],
     "settings": {
-      "foreground": "{{sponsors.fg}}10",
+      "foreground": "{{syntax.string}}10",
       "fontStyle": ""
     }
   },
@@ -1581,7 +1640,7 @@
       "punctuation.definition.string.template.end.js"
     ],
     "settings": {
-      "foreground": "{{done.fg}}10",
+      "foreground": "{{syntax.string}}10",
       "fontStyle": ""
     }
   },
@@ -1591,7 +1650,7 @@
       "punctuation.definition.string.end.sql"
     ],
     "settings": {
-      "foreground": "{{success.emphasis}}10",
+      "foreground": "{{syntax.string}}10",
       "fontStyle": ""
     }
   },
@@ -1603,7 +1662,7 @@
       "string.quoted.single.php"
     ],
     "settings": {
-      "foreground": "{{severe.fg}}10",
+      "foreground": "{{syntax.keyword}}10",
       "fontStyle": ""
     }
   },
@@ -1612,18 +1671,29 @@
       "string.quoted.other.backtick.sql"
     ],
     "settings": {
-      "foreground": "{{severe.fg}}10",
+      "foreground": "{{syntax.string}}10",
       "fontStyle": ""
     }
   },
   {
     "scope": [
       "variable.other.property.js",
-      "entity.name.function.member"
+      "variable.other.property.ts",
+      "variable.other.property.tsx",
+      "variable.other.property.jsx"
     ],
     "settings": {
-      "foreground": "{{severe.fg}}10",
-      "fontStyle": ""
+      "foreground": "{{syntax.property}}10"
+    }
+  },
+  {
+    "scope": [
+      "entity.name.function.member",
+      "entity.name.function.member.js",
+      "entity.name.function.member.ts"
+    ],
+    "settings": {
+      "foreground": "{{syntax.function}}10"
     }
   },
   {
@@ -1682,7 +1752,7 @@
       "punctuation.separator.comma.js"
     ],
     "settings": {
-      "foreground": "{{success.emphasis}}10",
+      "foreground": "{{syntax.punctuation}}10",
       "fontStyle": ""
     }
   },

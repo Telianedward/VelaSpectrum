@@ -1096,7 +1096,7 @@
         "source.python"
       ],
       "settings": {
-        "foreground": "#f1f2f2"
+        "foreground": "#50f6bb"
       }
     },
     {
@@ -1206,11 +1206,46 @@
     },
     {
       "scope": [
-        "punctuation.separator.period.python",
+        "punctuation.separator.period.python"
+      ],
+      "settings": {
+        "foreground": "#50f6bb"
+      }
+    },
+    {
+      "scope": [
         "punctuation.separator.colon.python"
       ],
       "settings": {
         "foreground": "#ccd0d5"
+      }
+    },
+    {
+      "scope": [
+        "meta.function-call.generic.python",
+        "meta.function-call.python",
+        "meta.member.access.python"
+      ],
+      "settings": {
+        "foreground": "#d2d9fd"
+      }
+    },
+    {
+      "scope": [
+        "meta.indexed-name.python",
+        "meta.item-access.python"
+      ],
+      "settings": {
+        "foreground": "#fdc2db"
+      }
+    },
+    {
+      "scope": [
+        "meta.attribute.python",
+        "meta.attribute.python variable.other.python"
+      ],
+      "settings": {
+        "foreground": "#50f6bb"
       }
     },
     {
@@ -2403,7 +2438,33 @@
         "variable.other.readwrite.js"
       ],
       "settings": {
-        "foreground": "#ff79ba"
+        "foreground": "#50f6bb"
+      }
+    },
+    {
+      "scope": [
+        "meta.function-call.js",
+        "meta.function-call.ts",
+        "meta.function-call.tsx",
+        "meta.function-call.jsx",
+        "meta.function-call.generic.js",
+        "meta.function-call.generic.ts",
+        "meta.function-call.method.js",
+        "meta.function-call.method.ts"
+      ],
+      "settings": {
+        "foreground": "#d2d9fd"
+      }
+    },
+    {
+      "scope": [
+        "meta.member.access.js",
+        "meta.member.access.ts",
+        "meta.member.access.tsx",
+        "meta.member.access.jsx"
+      ],
+      "settings": {
+        "foreground": "#d2d9fd"
       }
     },
     {
@@ -2454,7 +2515,7 @@
         "punctuation.separator.key-value.html"
       ],
       "settings": {
-        "foreground": "#ff79ba",
+        "foreground": "#cad3fe",
         "fontStyle": ""
       }
     },
@@ -2463,7 +2524,7 @@
         "punctuation.definition.tag"
       ],
       "settings": {
-        "foreground": "#ff79ba",
+        "foreground": "#cad3fe",
         "fontStyle": ""
       }
     },
@@ -2473,7 +2534,7 @@
         "punctuation.definition.string.end.js"
       ],
       "settings": {
-        "foreground": "#ff79ba",
+        "foreground": "#cdd7e3",
         "fontStyle": ""
       }
     },
@@ -2485,7 +2546,7 @@
         "punctuation.definition.string.template.end.js"
       ],
       "settings": {
-        "foreground": "#17bd64",
+        "foreground": "#cdd7e3",
         "fontStyle": ""
       }
     },
@@ -2495,7 +2556,7 @@
         "punctuation.definition.string.end.sql"
       ],
       "settings": {
-        "foreground": "#33e880",
+        "foreground": "#cdd7e3",
         "fontStyle": ""
       }
     },
@@ -2507,7 +2568,7 @@
         "string.quoted.single.php"
       ],
       "settings": {
-        "foreground": "#fdde94",
+        "foreground": "#e0cffe",
         "fontStyle": ""
       }
     },
@@ -2516,18 +2577,29 @@
         "string.quoted.other.backtick.sql"
       ],
       "settings": {
-        "foreground": "#fdde94",
+        "foreground": "#cdd7e3",
         "fontStyle": ""
       }
     },
     {
       "scope": [
         "variable.other.property.js",
-        "entity.name.function.member"
+        "variable.other.property.ts",
+        "variable.other.property.tsx",
+        "variable.other.property.jsx"
       ],
       "settings": {
-        "foreground": "#fdde94",
-        "fontStyle": ""
+        "foreground": "#7ce9bc"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.function.member",
+        "entity.name.function.member.js",
+        "entity.name.function.member.ts"
+      ],
+      "settings": {
+        "foreground": "#d2d9fd"
       }
     },
     {
@@ -2586,7 +2658,7 @@
         "punctuation.separator.comma.js"
       ],
       "settings": {
-        "foreground": "#33e880",
+        "foreground": "#ccd0d5",
         "fontStyle": ""
       }
     },
