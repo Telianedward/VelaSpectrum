@@ -419,12 +419,12 @@ export const ThemeElementName = [
   {
     "name": "dropdown.foreground",
     color: ( colors: any ) => colors.accent.fg,
-    "Alpha": 5,
+    "Alpha": 10,
     "description": "Цвет текста в выпадающем списке."
   },
   {
     "name": "dropdown.listBackground",
-    color: ( colors: any ) => colors.border.muted,
+    color: ( colors: any ) => colors.canvas.overlay,
     "Alpha": 10,
     "description": "Цвет фона списка внутри выпадающего элемента."
   },
@@ -757,7 +757,7 @@ export const ThemeElementName = [
   {
     "name": "listFilterWidget.background",
     color: ( colors: any ) => colors.accent.fg,
-    "Alpha": 5,
+    "Alpha": 10,
     "description": "Цвет фона виджета фильтрации при поиске в списке/дереве."
   },
   {
@@ -983,7 +983,7 @@ export const ThemeElementName = [
   {
     "name": "sideBar.background",
     color: ( colors: any ) => colors.canvas.overlay,
-    "Alpha": 6,
+    "Alpha": 10,
     "description": "Цвет фона боковой панели."
   },
   {
@@ -2926,7 +2926,7 @@ export const ThemeElementName = [
   {
     "name": "editorWidget.foreground",
     color: ( colors: any ) => colors.fg.default,
-    "Alpha": 5,
+    "Alpha": 10,
     "description": "Цвет текста виджетов редактора, например, диалога поиска и замены."
   },
   {
@@ -3004,7 +3004,7 @@ export const ThemeElementName = [
   {
     "name": "editorHoverWidget.foreground",
     color: ( colors: any ) => colors.fg.default,
-    "Alpha": 5,
+    "Alpha": 10,
     "description": "Цвет текста во всплывающей подсказке редактора."
   },
   {
@@ -3866,7 +3866,7 @@ export const ThemeElementName = [
   {
     "name": "menubar.selectionBackground",
     color: ( colors: any ) => colors.neutral.emphasis,
-    "Alpha": 5,
+    "Alpha": 8,
     "description": "Фон выбранного пункта меню в строке меню."
   },
   {
@@ -3896,13 +3896,13 @@ export const ThemeElementName = [
   {
     "name": "menu.selectionBackground",
     color: ( colors: any ) => colors.neutral.emphasis,
-    "Alpha": 5,
+    "Alpha": 8,
     "description": "Фон выбранного пункта в выпадающем меню."
   },
   {
     "name": "menu.selectionBorder",
     color: ( colors: any ) => colors.border.muted,
-    "Alpha": 5,
+    "Alpha": 10,
     "description": "Цвет границы выбранного пункта в выпадающем меню."
   },
   {
@@ -4006,7 +4006,7 @@ export const ThemeElementName = [
   {
     "name": "banner.background",
     color: ( colors: any ) => colors.neutral.emphasis,
-    "Alpha": 5,
+    "Alpha": 10,
     "description": "Фон баннера, отображаемого под заголовочной строкой."
   },
   {
@@ -4151,7 +4151,7 @@ export const ThemeElementName = [
   {
     "name": "quickInputList.focusBackground",
     color: ( colors: any ) => colors.neutral.emphasis,
-    "Alpha": 5,
+    "Alpha": 8,
     "description": "Фон выбранного элемента в списке быстрого выбора."
   },
   {
@@ -5164,7 +5164,7 @@ export const ThemeElementName = [
   {
     "name": "settings.dropdownForeground",
     color: ( colors: any ) => colors.fg.default,
-    "Alpha": 5,
+    "Alpha": 10,
     "description": "Цвет текста в выпадающем списке."
   },
   {
