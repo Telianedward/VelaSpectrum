@@ -48,8 +48,49 @@ interface TokenColorRule {
   settings: {
     foreground?: string;
     background?: string;
+    border?: string;
     fontStyle?: string;
+    [key: string]: string | undefined;
   };
+}
+
+/**
+ * Подставляет OKLCH-цвет из семантической палитры в шаблон вида `{{path}}` / `{{path}}N`.
+ * Суффикс N — альфа 0–10 (10 = непрозрачный); без суффикса используется 10.
+ *
+ * @param value - Строка настройки (например `{{border.muted}}10`)
+ * @param colors - Семантическая палитра темы
+ * @returns HEX (с альфой при необходимости) или исходная строка, если шаблон не разобран / цвет не найден
+ */
+function resolveColorTemplate(
+  value: string,
+  colors: Record<string, unknown>
+): string {
+  if (!value.includes('{{')) {
+    return value;
+  }
+
+  // {{path.to.color}} или {{path.to.color}}10 / {{path}}6
+  const match = value.match(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}(\d{1,2})?/);
+  if (!match) {
+    console.warn(`❌ Не удалось разобрать шаблон: ${value}`);
+    return value;
+  }
+
+  const path = match[1];
+  const alpha = match[2] != null ? parseInt(match[2], 10) : 10;
+  const parts = path.split('.');
+  let colorValue: any = colors;
+  for (const part of parts) {
+    colorValue = colorValue?.[part];
+  }
+
+  if (colorValue && typeof colorValue.l === 'number') {
+    return applyAlpha(colorValue, alpha);
+  }
+
+  console.warn(`🟡 Цвет не найден для пути: ${path}`);
+  return value;
 }
 
 /**
@@ -142,31 +183,16 @@ export function generateAllThemes(paletteName: PaletteName = 'default') {
 
     // Формируем tokenColors из JSON с подстановкой цветов
     // Поддержка: {{path}}10, {{path}}6, {{path}} (alpha по умолчанию 10)
+    // Резолвим любые строковые settings (foreground, background, border, …)
     const tokenColors = (tokenColorsConfig as unknown as TokenColorRule[]).map(rule => {
       const settings = { ...rule.settings };
 
-      (['foreground', 'background'] as const).forEach(key => {
+      for (const key of Object.keys(settings)) {
         const value = settings[key];
         if (typeof value === 'string' && value.includes('{{')) {
-          const match = value.match(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}(\d{1,2})?/);
-          if (match) {
-            const path = match[1];
-            const alpha = match[2] != null ? parseInt(match[2], 10) : 10;
-            const parts = path.split('.');
-            let colorValue: any = colors;
-            for (const part of parts) {
-              colorValue = colorValue?.[part];
-            }
-            if (colorValue && typeof colorValue.l === 'number') {
-              settings[key] = applyAlpha(colorValue, alpha);
-            } else {
-              console.warn(`🟡 Цвет не найден для пути: ${path}`);
-            }
-          } else {
-            console.warn(`❌ Не удалось разобрать шаблон: ${value}`);
-          }
+          settings[key] = resolveColorTemplate(value, colors as Record<string, unknown>);
         }
-      });
+      }
 
       return { ...rule, settings };
     });

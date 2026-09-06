@@ -4,6 +4,13 @@ All notable changes to the **Vela Spectrum** extension are documented in this fi
 
 Format inspired by [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.3.8] — 2026-09-06
+
+### Fixed
+
+- Template resolver now resolves `{{path}}N` placeholders in all `tokenColors` settings keys (including `border`), so `inlineChat.*` borders emit real HEX instead of unresolved `{{…}}10`.
+- Ready for Marketplace republish after VSIX verification (placeholders gone, `type` dark/light, 10 themes, version 0.3.8).
+
 ## [0.3.7] — 2026-09-06
 
 ### Changed

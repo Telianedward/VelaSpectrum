@@ -1883,19 +1883,19 @@
     {
       "scope": "inlineChat.border",
       "settings": {
-        "border": "{{border.muted}}10"
+        "border": "#d1d9e0"
       }
     },
     {
       "scope": "inlineChat.acceptedSuggestionBorder",
       "settings": {
-        "border": "{{success.emphasis}}10"
+        "border": "#013517"
       }
     },
     {
       "scope": "inlineChat.rejectedSuggestionBorder",
       "settings": {
-        "border": "{{danger.muted}}10"
+        "border": "#e5302a"
       }
     },
     {
