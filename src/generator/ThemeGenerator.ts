@@ -228,11 +228,24 @@ export function generateAllThemes(paletteName: PaletteName = 'default') {
       tokenColors
     };
 
-    // Применяем цвета из ThemeElementName к теме
+    // Применяем цвета из ThemeElementName к теме.
+    // contrast* / toolbar.hoverOutline в non-HC должны быть прозрачными:
+    // иначе Cursor рисует outline: 1px dashed (пунктир вокруг кнопок и панелей).
+    const hcOutlineTokens = new Set([
+      'contrastBorder',
+      'contrastActiveBorder',
+      'toolbar.hoverOutline'
+    ]);
+    const isHighContrast = config.mode === 'highContrast';
+
     for (const item of ThemeElementName) {
       try {
         const oklch = item.color(colors);
-        theme.colors[item.name] = applyAlpha(oklch, item.Alpha);
+        let alpha = item.Alpha;
+        if (hcOutlineTokens.has(item.name)) {
+          alpha = isHighContrast ? 10 : 0;
+        }
+        theme.colors[item.name] = applyAlpha(oklch, alpha);
       } catch (error) {
         console.error(`❌ Ошибка в item.color для "${item.name}":`, error);
         console.log('📋 item:', item);

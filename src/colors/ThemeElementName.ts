@@ -40,14 +40,14 @@ export const ThemeElementName = [
   {
     "name": "contrastBorder",
     color: ( colors: any ) => colors.canvas.inset,
-    "Alpha": 10,
-    "description": "Дополнительная граница вокруг элементов, чтобы отделить их от других для большего контраста."
+    "Alpha": 0,
+    "description": "HC-only. В обычных темах прозрачный — иначе Cursor/VS Code рисует лишние рамки (часто пунктир)."
   },
   {
     "name": "contrastActiveBorder",
     color: ( colors: any ) => colors.border.muted,
-    "Alpha": 10,
-    "description": "Дополнительная граница вокруг активных элементов для повышения контраста."
+    "Alpha": 0,
+    "description": "HC-only. Если задан непрозрачно, workbench использует outline: dashed."
   },
   /**
    * Base Colors
@@ -222,8 +222,8 @@ export const ThemeElementName = [
   {
     "name": "toolbar.hoverOutline",
     color: ( colors: any ) => colors.fg.muted,
-    "Alpha": 10,
-    "description": "Цвет обводки на панели инструментов при наведении курсора на действия."
+    "Alpha": 0,
+    "description": "Обводка toolbar hover. Непрозрачная даёт outline: dashed — по умолчанию выключена."
   },
   {
     "name": "editorActionList.background",
