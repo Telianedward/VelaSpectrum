@@ -1,164 +1,147 @@
 # Vela Spectrum
 
-> 🌌 Тема цвета будущего: глубокая, живая, интеллектуальная.
+Личная цветовая система для VS Code на перцептуально равномерном пространстве **OKLCH**. Версия расширения: **0.3.7**.
 
-### Vela Spectrum
+10 тем: пять режимов (`normal`, `dimmed`, `highContrast`, `colorblind`, `tritanopia`) × тёмный и светлый варианты.
 
-Vela Spectrum — это **личная цветовая система для VS Code**, созданная **для себя**, на основе **собственной библиотеки цветов и принципов восприятия**. Она разработана с учётом реальных условий: долгой работы, разных освещений, использования AI-инструментов.
+## Установка
 
-В отличие от типичных тем, основанных на HEX, она построена на **перцептуально равномерном цветовом пространстве OKLCH**, что обеспечивает:
-- Плавные, визуально сбалансированные переходы
-- Высокую читаемость без перенасыщенности
-- Корректное восприятие при любом освещении
+1. Установите расширение **Vela Spectrum** из Marketplace или из `.vsix`.
+2. `Code` → `Preferences: Color Theme` (или `Cmd/Ctrl+K` затем `Cmd/Ctrl+T`).
+3. Выберите одну из тем ниже — **ровно с этими подписями** (это `contributes.themes[].label` из `package.json`):
 
-Тема использует **семантический подход к цветам**: каждый оттенок имеет своё назначение (акцент, успех, ошибка, синтаксис), что позволяет гибко настраивать внешний вид под разные режимы и нужды.
+| Тема | `uiTheme` | Файл |
+|------|-----------|------|
+| **Vela Spectrum Dark+** | `vs-dark` | `themes/default-d.json` |
+| **Vela Spectrum Dimmed** | `vs-dark` | `themes/default-dd.json` |
+| **Vela Spectrum High Contrast** | `hc-black` | `themes/default-dhc.json` |
+| **Vela Spectrum Colorblind** | `vs-dark` | `themes/default-dc.json` |
+| **Vela Spectrum Tritanopia** | `hc-black` | `themes/default-dt.json` |
+| **Vela Spectrum Light+** | `vs` | `themes/default-l.json` |
+| **Vela Spectrum Dimmed Light** | `vs` | `themes/default-ld.json` |
+| **Vela Spectrum High Contrast Light** | `hc-light` | `themes/default-lhc.json` |
+| **Vela Spectrum Colorblind Light** | `vs` | `themes/default-lc.json` |
+| **Vela Spectrum Tritanopia Light** | `hc-light` | `themes/default-lt.json` |
 
----
-
-### Что делает Vela Spectrum особенной?
-
-🔹 **Приоритетный цвет — зелёный**
-Основной акцент сделан на **зелёный спектр** — цвет продуктивности, роста и спокойствия. Он мягкий, но заметный, идеально подходит для длительной работы.
-
-🔹 **Глубокая поддержка AI-инструментов**
-Полностью стилизована для **GitHub Copilot**, **Inline Chat**, **AI-подсказок** и **inlay hints** — все элементы интерфейса интегрированы в цветовую систему.
-
-🔹 **11 режимов отображения**
-Включая:
-- `normal`, `dimmed`, `highContrast`
-- `colorblind`, `tritanopia`
-- `light`, `dark`, `auto`
-- эксклюзивный `ai`-режим (**в разработке**)
-
-Каждый режим адаптируется под контекст: от офисного освещения до условий низкой доступности.
-
-🔹 **Доступность как приоритет**
-Режимы `colorblind` и `tritanopia` не просто приглушают цвета — они **перестраивают палитру**, чтобы ключевые элементы (ошибки, изменения, акценты) оставались различимыми.
-
-🔹 **Оптимизация для длительной работы**
-Темные и светлые тона сбалансированы так, чтобы **снизить усталость глаз**, особенно при работе с большими объёмами кода.
-
-🔹 **Единая экосистема цветов**
-Все 10 тем — от `Vela Spectrum Dark+` до `Vela Spectrum Dimmed Light` — созданы на одной архитектуре, что обеспечивает **консистентность** и **прогнозируемость**.
-
-🔹 **Сделано для себя, но открыто для всех**
-Эта тема родилась из личной потребности в **комфортной, читаемой и красивой среде**. Она основана на моей **собственной библиотеке цветов**, разработанной годами.
-
-🔹 **Готова к кастомизации**
-Хочешь другую цветовую гамму (синюю, фиолетовую, коричневую)? Напиши мне — и я сделаю для тебя **персональную версию** на той же архитектуре.
-
----
-
-> Она не просто красивая — она **умная**.
-> Она не просто светлая или тёмная — она **адаптивная**.
-> Она не просто тема — она **экосистема**.
-
----
-https://github.com/Telianedward/VelaSpectrum/raw/HEAD/images/demo/gif/VelaSpectrumDark.gif
-## 🔬 Как работает цвет: от OKLCH к HEX
-
-Vela Spectrum строится на **современном цветовом пространстве OKLCH**, которое решает ключевую проблему HEX и HSL: **визуальная неоднородность**.
-
-### Почему OKLCH?
-
-- В HSL/HEX одинаковое изменение числа ≠ одинаковое изменение восприятия
-- В OKLCH: **одинаковое изменение = одинаковое восприятие**
-- Это позволяет создавать **плавные градиенты**, **точные акценты**, **предсказуемую контрастность**
-
-### Как происходит преобразование?
-
-1. **OKLCH → Linear RGB**
-   Цвет в формате `{ l: 0.8, c: 0.2, h: 275 }` преобразуется в линейное RGB через математические формулы (на основе OKLab).
-2. **Linear RGB → sRGB**
-   Применяется гамма-коррекция для отображения на экранах.
-3. **sRGB → HEX**
-   Полученные значения (0–1) умножаются на 255 и конвертируются в шестнадцатеричный формат.
-
-> 🔧 Этот процесс выполняется в `ColorConverter.js` с высокой точностью, с учётом:
-> - Ограничений sRGB
-> - Альфа-канала
-> - Семантического связывания
-
----
-
-## 🖼 Скриншоты
-
-### Vela Spectrum Dark+
-![Dark](./images/demo/png/VelaSpectrumDark.png)
-
-### Vela Spectrum Light+
-![Light](./images/demo/png/VelaSpectrumLight.png)
-
-### Vela Spectrum Colorblind
-![Dark Colorblind](./images/demo/png/VelaSpectrumColorblind.png)
-
-### Vela Spectrum Colorblind Light
-![Dark Colorblind Light](./images/demo/png/VelaSpectrumColorblindLight.png)
-
-### Vela Spectrum Dimmed
-![Dimmed Mode](./images/demo/png/VelaSpectrumDimmed.png)
-
-### Vela Spectrum Dimmed Light
-![Dimmed Light Mode](./images/demo/png/VelaSpectrumDimmedLight.png)
-
-### Vela Spectrum High Contrast
-![High Contrast Mode](./images/demo/png/VelaSpectrumHighContrast.png)
-
-### Vela Spectrum High Contrast Light
-![High Contrast Light Mode](./images/demo/png/VelaSpectrumHighContrastLight.png)
-
-### Vela Spectrum Tritanopia
-![Tritanopia Mode](./images/demo/png/VelaSpectrumTritanopia.png)
-
-### Vela Spectrum Tritanopia Light
-![Tritanopia Light Mode](./images/demo/png/VelaSpectrumTritanopiaLight.png)
-
----
-
-## 🎥 Видео-превью (GIF)
-
-### Vela Spectrum Dark+
-![Dark](./images/demo/gif/VelaSpectrumDark.gif)
-
-### Vela Spectrum Light+
-![Light](./images/demo/gif/VelaSpectrumLight.gif)
-
-### Vela Spectrum Colorblind
-![Dark Colorblind](./images/demo/gif/VelaSpectrumColorblind.gif)
-
-### Vela Spectrum Colorblind Light
-![Dark Colorblind Light](./images/demo/gif/VelaSpectrumColorblindLight.gif)
-
-### Vela Spectrum Dimmed
-![Dimmed Mode](./images/demo/gif/VelaSpectrumDimmed.gif)
-
-### Vela Spectrum Dimmed Light
-![Dimmed Light Mode](./images/demo/gif/VelaSpectrumDimmedLight.gif)
-
-### Vela Spectrum High Contrast
-![High Contrast Mode](./images/demo/gif/VelaSpectrumHighContrast.gif)
-
-### Vela Spectrum High Contrast Light
-![High Contrast Light Mode](./images/demo/gif/VelaSpectrumHighContrastLight.gif)
-
-### Vela Spectrum Tritanopia
-![Tritanopia Mode](./images/demo/gif/VelaSpectrumTritanopia.gif)
-
-### Vela Spectrum Tritanopia Light
-![Tritanopia Light Mode](./images/demo/gif/VelaSpectrumTritanopiaLight.gif)
-
----
-
-## ⚙️ Настройки (рекомендуемые)
-
-Добавь в `settings.json`:
+Пример в `settings.json`:
 
 ```json
 {
+  "workbench.colorTheme": "Vela Spectrum Dark+",
   "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairs": "active",
-  "editor.guides.highlightActiveBracketPair": true,
-  "editor.inlineSuggest.enabled": true,
-  "editor.lightbulb.enabled": true,
-  "workbench.colorTheme": "Vela Spectrum"
+  "editor.guides.bracketPairs": "active"
 }
+```
+
+> В JSON темы поле `type` — только `"dark"` или `"light"`. Базовый chrome VS Code задаётся через `uiTheme` в `package.json` (`vs-dark` / `vs` / `hc-black` / `hc-light`).
+
+## Режимы
+
+| Режим | Назначение |
+|-------|------------|
+| `normal` | Стандартная палитра (Dark+ / Light+) |
+| `dimmed` | Приглушённые акценты и ниже насыщенность |
+| `highContrast` | Усиленный контраст UI и синтаксиса; HC Light исправлен (без «схлопывания» светлоты) |
+| `colorblind` | Перестройка палитры под протанопию/дейтеранопию |
+| `tritanopia` | Перестройка под тританопию (сине-жёлтая ось) |
+
+Отдельных режимов `ai`, `auto` или «11-го режима» **нет**.
+
+## Цветовая философия
+
+- Палитра **семантическая**: роли вроде canvas / fg / accent / success / danger / warning / syntax, а не произвольные HEX по экрану.
+- **Зелёный** — акцент для прогресса, success, git-added, primary CTA и похожих сигналов. Он **не** залит на весь chrome: после refresh `success.emphasis` ослаблен, лишний «зелёный интерфейс» убран в пользу нейтралей и accent.
+- **Warning ≠ error**: предупреждения и ошибки разведены по тону и роли.
+- Мягче основной foreground, отдельные уровни светлоты синтаксиса для light/dark, заметный `focusBorder`, комментарии ближе к AA.
+
+В темах включён `semanticHighlighting: true` и TextMate `tokenColors`. Отдельного блока `semanticTokenColors` пока **нет**.
+
+Стили для Copilot / Inline Chat / inlay hints задаются через обычные цвета workbench и токенов там, где VS Code это позволяет — без отдельного «AI-режима».
+
+## Как работает цвет: OKLCH → HEX
+
+Источник правды — TypeScript-библиотека `src/colors/ColorConverter.ts` (`OKLCHColorGenerator`).
+
+1. Цвета библиотеки и пресетов задаются как **HEX** (и имена из `src/colors/colors.json`).
+2. Конвертер переводит **HEX → sRGB → linear RGB → OKLab → OKLCH**.
+3. В OKLCH: **`l` ∈ [0..1]**, `c` ≥ 0, `h` ∈ [0..360).
+4. `ThemeColors` строит семантические роли с учётом режима и dark/light.
+5. `ThemeElementName` + `applyAlpha` мапят роли на ключи VS Code; `oklchToHex(l, c, h, alpha)` пишет итоговый HEX (с альфой при необходимости).
+
+Не путать с HSL: одинаковый шаг по `l`/`c` в OKLCH ближе к одинаковому шагу восприятия.
+
+## Структура репозитория
+
+```
+src/                 # генератор (в git): ColorConverter, ThemeColors, ThemeElementName, ThemeGenerator
+themes/*.json        # готовые темы для VS Code (регенерируются сборкой)
+package.json         # contributes.themes (label + uiTheme + path)
+VelaSpectrum.png     # иконка расширения (корень пакета)
+images/demo/         # скриншоты PNG/GIF для README (не обязательны в .vsix)
+```
+
+Исходники генератора снова в git: чистый clone может пересобрать темы. В `.vsix` попадают в основном `themes/`, манифест и иконка; `src/`, `scripts/`, `dist/` в пакет не кладутся (см. `.vscodeignore`).
+
+## Сборка из исходников
+
+```bash
+npm install
+npm run build          # tsc && node dist/main.js → themes/default-*.json
+npm run check-colors   # проверка палитры
+npm run watch          # пересборка при правках src/
+npm run package        # check-colors + generate-package.js + vsce package
+```
+
+`npm run package` обновляет `contributes.themes` из файлов в `themes/` по шаблону `package.json.template` — после упаковки сверьте `version` и labels.
+
+## Скриншоты
+
+Скриншоты лежат в репозитории (`images/demo/…`). Ниже — абсолютные URL на `main`, чтобы превью работало и на GitHub, и в Marketplace (тяжёлые demo-ассеты в `.vsix` не включаются).
+
+### PNG
+
+![Vela Spectrum Dark+](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/png/VelaSpectrumDark.png)
+
+![Vela Spectrum Light+](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/png/VelaSpectrumLight.png)
+
+![Vela Spectrum Colorblind](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/png/VelaSpectrumColorblind.png)
+
+![Vela Spectrum Colorblind Light](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/png/VelaSpectrumColorblindLight.png)
+
+![Vela Spectrum Dimmed](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/png/VelaSpectrumDimmed.png)
+
+![Vela Spectrum Dimmed Light](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/png/VelaSpectrumDimmedLight.png)
+
+![Vela Spectrum High Contrast](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/png/VelaSpectrumHighContrast.png)
+
+![Vela Spectrum High Contrast Light](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/png/VelaSpectrumHighContrastLight.png)
+
+![Vela Spectrum Tritanopia](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/png/VelaSpectrumTritanopia.png)
+
+![Vela Spectrum Tritanopia Light](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/png/VelaSpectrumTritanopiaLight.png)
+
+### GIF
+
+![Dark+](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/gif/VelaSpectrumDark.gif)
+
+![Light+](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/gif/VelaSpectrumLight.gif)
+
+![Colorblind](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/gif/VelaSpectrumColorblind.gif)
+
+![Colorblind Light](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/gif/VelaSpectrumColorblindLight.gif)
+
+![Dimmed](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/gif/VelaSpectrumDimmed.gif)
+
+![Dimmed Light](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/gif/VelaSpectrumDimmedLight.gif)
+
+![High Contrast](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/gif/VelaSpectrumHighContrast.gif)
+
+![High Contrast Light](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/gif/VelaSpectrumHighContrastLight.gif)
+
+![Tritanopia](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/gif/VelaSpectrumTritanopia.gif)
+
+![Tritanopia Light](https://raw.githubusercontent.com/Telianedward/VelaSpectrum/main/images/demo/gif/VelaSpectrumTritanopiaLight.gif)
+
+## Лицензия
+
+MIT. Репозиторий: [Telianedward/VelaSpectrum](https://github.com/Telianedward/VelaSpectrum).

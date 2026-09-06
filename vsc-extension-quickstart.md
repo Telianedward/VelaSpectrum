@@ -1,28 +1,20 @@
-# Welcome to your VS Code Extension
+# Vela Spectrum — local development
 
-## What's in the folder
+## Layout
 
-* This folder contains all of the files necessary for your color theme extension.
-* `package.json` - this is the manifest file that defines the location of the theme file and specifies the base theme of the theme.
-* `themes/Dark mode ART-color-theme.json` - the color theme definition file.
+- `package.json` — extension manifest; `contributes.themes` lists the 10 theme labels and `uiTheme` values.
+- `themes/default-*.json` — generated color themes (`type`: `"dark"` | `"light"`).
+- `src/` — TypeScript generator (`ColorConverter`, `ThemeColors`, `ThemeElementName`, `ThemeGenerator`).
 
-## Get up and running straight away
+## Run
 
-* Press `F5` to open a new window with your extension loaded.
-* Open `File > Preferences > Color Themes` and pick your color theme.
-* Open a file that has a language associated. The languages' configured grammar will tokenize the text and assign 'scopes' to the tokens. To examine these scopes, invoke the `Developer: Inspect Editor Tokens and Scopes` command from the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac).
+1. `npm install`
+2. `npm run build` to regenerate `themes/*.json`
+3. Press `F5` to open an Extension Development Host
+4. `Preferences: Color Theme` → pick e.g. **Vela Spectrum Dark+**
 
-## Make changes
+Inspect scopes with `Developer: Inspect Editor Tokens and Scopes`.
 
-* Changes to the theme file are automatically applied to the Extension Development Host window.
+## Package
 
-## Adopt your theme to Visual Studio Code
-
-* The token colorization is done based on standard TextMate themes. Colors are matched against one or more scopes.
-
-To learn more about scopes and how they're used, check out the [color theme](https://code.visualstudio.com/api/extension-guides/color-theme) documentation.
-
-## Install your extension
-
-* To start using your extension with Visual Studio Code copy it into the `<user home>/.vscode/extensions` folder and restart Code.
-* To share your extension with the world, read on https://code.visualstudio.com/docs about publishing an extension.
+`npm run package` runs color checks, refreshes `contributes.themes` from `package.json.template` + files in `themes/`, then builds a `.vsix` via `@vscode/vsce`.

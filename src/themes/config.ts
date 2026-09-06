@@ -139,7 +139,7 @@ export const themeConfigs: ThemeConfig[] = [
   },
   {
     key: 'dd',
-    name: 'Vela Spectrum Dark+ Dimmed',
+    name: 'Vela Spectrum Dimmed',
     type: 'vs-dark',
     accentColorName: 'blues',
     mode: 'dimmed',
@@ -155,7 +155,7 @@ export const themeConfigs: ThemeConfig[] = [
   },
   {
     key: 'dc',
-    name: 'Vela Spectrum Dark+ Colorblind',
+    name: 'Vela Spectrum Colorblind',
     type: 'vs-dark',
     accentColorName: 'blues',
     mode: 'colorblind',
@@ -163,7 +163,7 @@ export const themeConfigs: ThemeConfig[] = [
   },
   {
     key: 'dt',
-    name: 'Vela Spectrum Dark+ Tritanopia',
+    name: 'Vela Spectrum Tritanopia',
     type: 'hc-black',
     accentColorName: 'blues',
     mode: 'tritanopia',
@@ -203,7 +203,7 @@ export const themeConfigs: ThemeConfig[] = [
   },
   {
     key: 'lt',
-    name: 'Vela Spectrum Light+ Tritanopia',
+    name: 'Vela Spectrum Tritanopia Light',
     type: 'hc-light',
     accentColorName: 'blues',
     mode: 'tritanopia',

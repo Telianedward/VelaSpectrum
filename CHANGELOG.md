@@ -1,9 +1,27 @@
-# Change Log
+# Changelog
 
-All notable changes to the "dark-mod-art" extension will be documented in this file.
+All notable changes to the **Vela Spectrum** extension are documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+Format inspired by [Keep a Changelog](https://keepachangelog.com/).
+
+## [0.3.7] — 2026-09-06
+
+### Changed
+
+- Theme refresh: softer foreground, separate light/dark syntax lightness, warning≠error, stronger `focusBorder`, comments closer to AA contrast.
+- Less green chrome: `success.emphasis` no longer paints most UI; green kept for progress, success/git marks, badges, and primary CTAs.
+- Theme JSON `type` is `"dark"` | `"light"`; VS Code base chrome still comes from `uiTheme` in `package.json`.
+- Generator sources (`src/`, scripts) are versioned again; `themes/*.json` regenerated from them.
+- Docs aligned with the real 10 themes (no phantom `ai` / `auto` / “11 modes”); theme labels match `package.json` / `theme.name`.
+
+### Fixed
+
+- High Contrast Light lightness collapse and related OKLCH out-of-gamut / NaN issues in the library pipeline.
 
 ## [Unreleased]
 
-- Initial release
+—
+
+## [0.3.5] / earlier
+
+See git history for pre-0.3.7 packaging and theme iterations.
