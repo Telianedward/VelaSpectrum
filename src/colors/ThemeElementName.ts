@@ -257,53 +257,54 @@ export const ThemeElementName = [
    *
    * @see https://code.visualstudio.com/api/references/theme-color#button-control
    */
-  // === Кнопки ===
+  // === Кнопки (ghost / outline, как QueenCI .qc-button--ghost-*) ===
+  // VS Code theme JSON не умеет border-radius и CSS-градиенты — только цвета.
   {
     "name": "button.background",
     color: ( colors: any ) => colors.success.emphasis,
-    "Alpha": 5,
-    "description": "Цвет фона кнопки."
+    "Alpha": 1,
+    "description": "Фон primary-кнопки: почти прозрачный (ghost), без плотной заливки."
   },
   {
     "name": "button.border",
-    color: ( colors: any ) => colors.border.muted,
-    "Alpha": 3,
-    "description": "Цвет рамки кнопки."
+    color: ( colors: any ) => colors.success.emphasis,
+    "Alpha": 7,
+    "description": "Обводка primary-кнопки (outline / ghost-color border)."
   },
   {
     "name": "button.foreground",
-    color: ( colors: any ) => colors.fg.default,
+    color: ( colors: any ) => colors.success.fg,
     "Alpha": 10,
-    "description": "Цвет текста кнопки."
+    "description": "Текст primary-кнопки в цвете success (как ghost text step-8)."
   },
   {
     "name": "button.hoverBackground",
     color: ( colors: any ) => colors.success.emphasis,
     "Alpha": 3,
-    "description": "Цвет фона кнопки при наведении курсора."
+    "description": "Мягкая заливка primary при hover (не solid)."
   },
   {
     "name": "button.secondaryBackground",
-    color: ( colors: any ) => colors.neutral.emphasis,
-    "Alpha": 10,
-    "description": "Цвет фона второстепенной кнопки."
+    color: ( colors: any ) => colors.neutral.muted,
+    "Alpha": 1,
+    "description": "Фон secondary: ghost/outline, почти прозрачный."
   },
   {
     "name": "button.secondaryForeground",
     color: ( colors: any ) => colors.fg.default,
     "Alpha": 10,
-    "description": "Цвет текста второстепенной кнопки."
+    "description": "Текст второстепенной кнопки."
   },
   {
     "name": "button.secondaryHoverBackground",
-    color: ( colors: any ) => colors.neutral.emphasisPlus,
-    "Alpha": 10,
-    "description": "Цвет фона второстепенной кнопки при наведении."
+    color: ( colors: any ) => colors.neutral.muted,
+    "Alpha": 4,
+    "description": "Мягкий hover у secondary (subtle surface)."
   },
   {
     "name": "button.separator",
     color: ( colors: any ) => colors.border.muted,
-    "Alpha": 10,
+    "Alpha": 6,
     "description": "Цвет разделителя между кнопками."
   },
 
@@ -4033,26 +4034,26 @@ export const ThemeElementName = [
   {
     "name": "extensionButton.prominentBackground",
     color: ( colors: any ) => colors.success.emphasis,
-    "Alpha": 5,
-    "description": "Фон prominent-кнопки в представлении расширений (например, кнопка «Установить»)."
+    "Alpha": 1,
+    "description": "Фон prominent-кнопки: ghost/outline, почти прозрачный."
   },
   {
     "name": "extensionButton.prominentForeground",
-    color: ( colors: any ) => colors.fg.default,
+    color: ( colors: any ) => colors.success.fg,
     "Alpha": 10,
-    "description": "Цвет текста prominent-кнопки в представлении расширений."
+    "description": "Текст prominent-кнопки в цвете success."
   },
   {
     "name": "extensionButton.prominentHoverBackground",
     color: ( colors: any ) => colors.success.emphasis,
-    "Alpha": 6,
-    "description": "Фон prominent-кнопки при наведении в представлении расширений."
+    "Alpha": 3,
+    "description": "Мягкий hover prominent-кнопки."
   },
   {
     "name": "extensionButton.background",
-    color: ( colors: any ) => colors.canvas.inset,
-    "Alpha": 10,
-    "description": "Фон кнопки действий с расширением (например, «Отключить»)."
+    color: ( colors: any ) => colors.neutral.muted,
+    "Alpha": 1,
+    "description": "Фон кнопки действий с расширением: ghost."
   },
   {
     "name": "extensionButton.foreground",
@@ -4062,9 +4063,9 @@ export const ThemeElementName = [
   },
   {
     "name": "extensionButton.hoverBackground",
-    color: ( colors: any ) => colors.success.emphasis,
-    "Alpha": 3,
-    "description": "Фон кнопки действий с расширением при наведении."
+    color: ( colors: any ) => colors.neutral.muted,
+    "Alpha": 4,
+    "description": "Мягкий hover кнопки действий с расширением."
   },
   {
     "name": "extensionButton.separator",
