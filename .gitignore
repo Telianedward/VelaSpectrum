@@ -9,4 +9,7 @@ dist/
 *.json.template
 *.ai
 .vscode/
+# Исключения: скрипты сборки/проверки должны версионироваться
+!scripts/
+!scripts/**
 .gitignore
